@@ -5,359 +5,345 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Sales Rocket Review - MAReviews</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] }
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        brand: { 50: '#eef2ff', 100: '#e0e7ff', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca', 800: '#3730a3', 900: '#312e81' }
+                    }
                 }
             }
         }
     </script>
     <style>
         body { font-family: 'Inter', system-ui, sans-serif; }
-        .gradient-header { background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 50%, #2563eb 100%); }
-        .nav-link { position: relative; }
-        .nav-link::after { content:''; position:absolute; bottom:0; left:50%; width:0; height:2px; background:#fff; transition:all 0.3s; transform:translateX(-50%); }
-        .nav-link:hover::after { width:80%; }
-        @keyframes fadeInUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-        .animate-fadeInUp { animation: fadeInUp 0.6s ease-out forwards; }
-        .cta-pulse { animation: pulse 2s infinite; }
-        @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(249,115,22,0.4); } 50% { box-shadow: 0 0 0 12px rgba(249,115,22,0); } }
+        .glass { backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: rgba(255,255,255,0.06); }
+        .hero-bg { background: linear-gradient(160deg, #0c0a1d 0%, #1a1145 35%, #2d1b69 60%, #1e1b4b 100%); }
+        .cta-glow { animation: glow 2s ease-in-out infinite alternate; }
+        @keyframes glow {
+            from { box-shadow: 0 0 8px rgba(139,92,246,0.3), 0 0 24px rgba(139,92,246,0.1); }
+            to { box-shadow: 0 0 16px rgba(139,92,246,0.5), 0 0 40px rgba(139,92,246,0.2); }
+        }
+        .check-icon { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; border-radius: 50%; flex-shrink: 0; }
+        .check-icon svg { width: 12px; height: 12px; color: #fff; }
+        .sidebar-card { background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%); }
+        .shine-border { position: relative; }
+        .shine-border::before {
+            content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+            background: linear-gradient(135deg, rgba(99,102,241,0.3), rgba(168,85,247,0.1), rgba(236,72,153,0.3));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none;
+        }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: translateX(4px); background: #eef2ff; }
     </style>
 </head>
-<body class="bg-gray-100/80 text-gray-800 antialiased">
+<body class="bg-[#fafbff] text-gray-800 antialiased">
 
 <!-- Header -->
-<header class="gradient-header shadow-xl sticky top-0 z-50">
+<header class="hero-bg sticky top-0 z-50 border-b border-white/[0.06]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16">
-            <a href="index.html" class="flex-shrink-0">
-                <img src="logo.jpeg" alt="MA Reviews" class="h-12 w-auto brightness-110 drop-shadow-lg">
+            <a href="index.html" class="flex items-center gap-2.5 group">
+                <img src="logo.jpeg" alt="MA Reviews" class="h-9 w-auto brightness-125 rounded-lg">
+                <span class="text-white font-bold text-lg tracking-tight hidden sm:block">MA<span class="text-indigo-400">Reviews</span></span>
             </a>
-            <button id="menuToggle" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <button id="menuToggle" class="lg:hidden text-white/80 p-2 rounded-xl hover:bg-white/10 transition-all">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
             </button>
             <nav class="hidden lg:flex items-center gap-1">
-                <a href="privacy-policy.html" class="nav-link text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition">Privacy Policy</a>
-                <a href="about-us.html" class="nav-link text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition">About Us</a>
-                <a href="affiliate-disclosure.html" class="nav-link text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition">Affiliate Disclosure</a>
-                <a href="terms-and-conditions.html" class="nav-link text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition">Terms</a>
-                <a href="contact-us.html" class="nav-link text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition">Contact</a>
-                <a href="disclaimer.html" class="nav-link text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition">Disclaimer</a>
+                <a href="privacy-policy.html" class="text-white/60 hover:text-white px-3 py-2 text-[13px] font-medium transition-all rounded-xl hover:bg-white/[0.07]">Privacy Policy</a>
+                <a href="about-us.html" class="text-white/60 hover:text-white px-3 py-2 text-[13px] font-medium transition-all rounded-xl hover:bg-white/[0.07]">About Us</a>
+                <a href="affiliate-disclosure.html" class="text-white/60 hover:text-white px-3 py-2 text-[13px] font-medium transition-all rounded-xl hover:bg-white/[0.07]">Affiliate Disclosure</a>
+                <a href="terms-and-conditions.html" class="text-white/60 hover:text-white px-3 py-2 text-[13px] font-medium transition-all rounded-xl hover:bg-white/[0.07]">Terms</a>
+                <a href="contact-us.html" class="text-white/60 hover:text-white px-3 py-2 text-[13px] font-medium transition-all rounded-xl hover:bg-white/[0.07]">Contact</a>
+                <a href="disclaimer.html" class="text-white/60 hover:text-white px-3 py-2 text-[13px] font-medium transition-all rounded-xl hover:bg-white/[0.07]">Disclaimer</a>
             </nav>
         </div>
         <div id="mobileMenu" class="hidden lg:hidden pb-4">
-            <div class="flex flex-col gap-1 bg-white/10 rounded-xl p-3 backdrop-blur-sm">
-                <a href="privacy-policy.html" class="text-white/90 hover:text-white hover:bg-white/10 px-4 py-2.5 rounded-lg text-sm transition">Privacy Policy</a>
-                <a href="about-us.html" class="text-white/90 hover:text-white hover:bg-white/10 px-4 py-2.5 rounded-lg text-sm transition">About Us</a>
-                <a href="affiliate-disclosure.html" class="text-white/90 hover:text-white hover:bg-white/10 px-4 py-2.5 rounded-lg text-sm transition">Affiliate Disclosure</a>
-                <a href="terms-and-conditions.html" class="text-white/90 hover:text-white hover:bg-white/10 px-4 py-2.5 rounded-lg text-sm transition">Terms and Conditions</a>
-                <a href="contact-us.html" class="text-white/90 hover:text-white hover:bg-white/10 px-4 py-2.5 rounded-lg text-sm transition">Contact Us</a>
-                <a href="disclaimer.html" class="text-white/90 hover:text-white hover:bg-white/10 px-4 py-2.5 rounded-lg text-sm transition">Disclaimer</a>
+            <div class="flex flex-col glass rounded-2xl p-2 border border-white/10">
+                <a href="privacy-policy.html" class="text-white/80 px-4 py-2.5 rounded-xl text-sm hover:bg-white/[0.07] transition">Privacy Policy</a>
+                <a href="about-us.html" class="text-white/80 px-4 py-2.5 rounded-xl text-sm hover:bg-white/[0.07] transition">About Us</a>
+                <a href="affiliate-disclosure.html" class="text-white/80 px-4 py-2.5 rounded-xl text-sm hover:bg-white/[0.07] transition">Affiliate Disclosure</a>
+                <a href="terms-and-conditions.html" class="text-white/80 px-4 py-2.5 rounded-xl text-sm hover:bg-white/[0.07] transition">Terms</a>
+                <a href="contact-us.html" class="text-white/80 px-4 py-2.5 rounded-xl text-sm hover:bg-white/[0.07] transition">Contact Us</a>
+                <a href="disclaimer.html" class="text-white/80 px-4 py-2.5 rounded-xl text-sm hover:bg-white/[0.07] transition">Disclaimer</a>
             </div>
         </div>
     </div>
 </header>
 
 <!-- Breadcrumb -->
-<div class="bg-white border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2">
-        <nav class="flex items-center gap-2 text-xs text-gray-500">
-            <a href="index.html" class="hover:text-blue-600 transition">Home</a>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            <span class="text-gray-800 font-medium">AI Sales Rocket Review</span>
+<div class="border-b border-slate-200/60 bg-white/80 backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+        <nav class="flex items-center gap-2 text-xs text-slate-400">
+            <a href="index.html" class="hover:text-indigo-600 transition-colors flex items-center gap-1">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                Home
+            </a>
+            <svg class="w-3 h-3 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            <span class="text-slate-700 font-semibold">AI Sales Rocket Review</span>
         </nav>
     </div>
 </div>
 
-<!-- Main Content -->
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-    <div class="flex flex-col lg:flex-row gap-4">
+<!-- Main -->
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<div class="flex flex-col lg:flex-row gap-6">
+<main class="flex-1 min-w-0">
+<article class="bg-white rounded-2xl border border-slate-200/60 shadow-sm overflow-hidden shine-border">
+<div class="h-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
+<div class="px-6 py-6 sm:px-8 sm:py-8">
 
-        <main class="flex-1 min-w-0">
-            <article class="bg-white rounded-xl shadow-md overflow-hidden animate-fadeInUp">
-                <div class="h-1 bg-gradient-to-r from-blue-600 via-purple-500 to-orange-500"></div>
-                <div class="px-5 py-4 sm:px-6 sm:py-5">
-
-                    <!-- Title -->
-                    <h1 class="text-2xl sm:text-3xl font-extrabold text-gray-900 mb-1">AI Sales Rocket Review</h1>
-                    <div class="flex flex-wrap items-center gap-3 text-xs text-gray-500 mb-3 pb-3 border-b border-gray-100">
-                        <span class="flex items-center gap-1.5">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                            04/01/2026
-                        </span>
-                        <span class="text-gray-300">|</span>
-                        <span>Updated: 03/24/2026</span>
-                        <span class="text-gray-300">|</span>
-                        <span>by <a href="#" class="text-blue-600 hover:underline font-medium">mareviews</a></span>
-                    </div>
-
-                    <!-- Content -->
-                    <div class="prose max-w-none">
-
-                        <h2 class="text-lg font-bold text-gray-900 mt-3 mb-2 flex items-center gap-2">
-                            <span class="w-1 h-5 bg-blue-600 rounded-full"></span>
-                            AI Sales Rocket Review 2026 + OTO's Coupon + $43,000 Free Bonus
-                        </h2>
-
-                        <!-- Product Image -->
-                        <div class="my-3 bg-gradient-to-br from-gray-50 to-blue-50 rounded-lg border border-gray-200 p-4 sm:p-5 flex justify-center">
-                            <img src="aiimg.png" alt="AI Sales Rocket Product Box" class="max-w-xs w-full drop-shadow-2xl">
-                        </div>
-
-                        <p class="text-gray-600 leading-normal text-sm mb-2">In today's competitive self-publishing world, writing a great book is no longer enough. Without proper marketing, even high-quality books can struggle to gain visibility and generate consistent sales. This is where <strong class="text-gray-900">AI Sales Rocket</strong> comes in.</p>
-
-                        <p class="text-gray-600 leading-normal text-sm mb-2"><strong class="text-gray-900">AI Sales Rocket</strong> is an advanced AI-powered marketing automation platform built specifically for Amazon KDP authors and self-publishers. It helps increase book visibility and sales without spending hours on manual promotion.</p>
-
-                        <!-- Product Info Table -->
-                        <div class="my-3 rounded-lg overflow-hidden border border-gray-200 shadow-sm">
-                            <div class="bg-gradient-to-r from-blue-600 to-blue-700 px-5 py-3">
-                                <h3 class="text-white font-bold text-base m-0">Product Overview</h3>
-                            </div>
-                            <table class="w-full">
-                                <tr class="border-b border-gray-100"><td class="px-4 py-2.5 font-semibold text-gray-700 bg-gray-50 w-44">Creator</td><td class="px-4 py-2.5 text-gray-600">Andreas Quintana &amp; Ryan Mac</td></tr>
-                                <tr class="border-b border-gray-100"><td class="px-4 py-2.5 font-semibold text-gray-700 bg-gray-50">Product</td><td class="px-4 py-2.5 text-gray-600">AI Sales Rocket</td></tr>
-                                <tr class="border-b border-gray-100"><td class="px-4 py-2.5 font-semibold text-gray-700 bg-gray-50">Launch Date</td><td class="px-4 py-2.5 text-gray-600">March 17, 2026</td></tr>
-                                <tr class="border-b border-gray-100"><td class="px-4 py-2.5 font-semibold text-gray-700 bg-gray-50">Launch Time</td><td class="px-4 py-2.5 text-gray-600">09:00 EST</td></tr>
-                                <tr class="border-b border-gray-100"><td class="px-4 py-2.5 font-semibold text-gray-700 bg-gray-50">Front-End Price</td><td class="px-4 py-2.5"><span class="text-green-600 font-bold text-lg">$27</span> <span class="text-gray-400 text-sm">(one-time payment)</span></td></tr>
-                                <tr class="border-b border-gray-100"><td class="px-4 py-2.5 font-semibold text-gray-700 bg-gray-50">Guarantee</td><td class="px-4 py-2.5 text-gray-600">30-Day Money Back Guarantee</td></tr>
-                                <tr class="border-b border-gray-100"><td class="px-4 py-2.5 font-semibold text-gray-700 bg-gray-50">Support</td><td class="px-4 py-2.5 text-gray-600">Effective Response</td></tr>
-                                <tr><td class="px-4 py-2.5 font-semibold text-gray-700 bg-gray-50">Recommendation</td><td class="px-4 py-2.5"><span class="inline-flex items-center gap-1 text-green-600 font-bold">&#11088; Highly Recommend</span></td></tr>
-                            </table>
-                        </div>
-
-                        <!-- CTA -->
-                        <div class="text-center my-4">
-                            <a href="#" class="cta-pulse inline-block bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-6 py-3 rounded-xl text-base font-bold transition-all hover:scale-105 shadow-lg shadow-orange-200">
-                                Get EarlyBird Discount &amp; 300+ Bonus Bundle (worth $43k) &rarr;
-                            </a>
-                        </div>
-
-                        <h2 class="text-lg font-bold text-gray-900 mt-4 mb-2 flex items-center gap-2">
-                            <span class="w-1 h-5 bg-blue-600 rounded-full"></span>
-                            What Is AI Sales Rocket?
-                        </h2>
-                        <p class="text-gray-600 leading-normal text-sm mb-2">AI Sales Rocket is an advanced AI-powered marketing automation platform built specifically for Amazon KDP authors and self-publishers. The system automatically creates promotional materials including social media posts, captions, blog articles, and images. It auto-publishes across multiple platforms like Facebook, Instagram, Pinterest, and LinkedIn from a single dashboard.</p>
-
-                        <!-- Key Features -->
-                        <h2 class="text-lg font-bold text-gray-900 mt-4 mb-2 flex items-center gap-2">
-                            <span class="w-1 h-5 bg-blue-600 rounded-full"></span>
-                            Key Features
-                        </h2>
-                        <div class="grid sm:grid-cols-2 gap-2 mb-3">
-                            <div class="flex items-start gap-3 bg-blue-50 rounded-xl p-4">
-                                <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center"><svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
-                                <span class="text-sm text-gray-700">Generates high-converting posts, captions, articles, and visuals</span>
-                            </div>
-                            <div class="flex items-start gap-3 bg-blue-50 rounded-xl p-4">
-                                <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center"><svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
-                                <span class="text-sm text-gray-700">Auto-publishes across seven platforms</span>
-                            </div>
-                            <div class="flex items-start gap-3 bg-blue-50 rounded-xl p-4">
-                                <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center"><svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
-                                <span class="text-sm text-gray-700">Drives targeted traffic to Amazon listings</span>
-                            </div>
-                            <div class="flex items-start gap-3 bg-blue-50 rounded-xl p-4">
-                                <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-blue-600 flex items-center justify-center"><svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
-                                <span class="text-sm text-gray-700">Fully automated 24/7 system</span>
-                            </div>
-                            <div class="flex items-start gap-3 bg-green-50 rounded-xl p-4">
-                                <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-green-600 flex items-center justify-center"><svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
-                                <span class="text-sm text-gray-700">Zero monthly costs</span>
-                            </div>
-                            <div class="flex items-start gap-3 bg-green-50 rounded-xl p-4">
-                                <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-green-600 flex items-center justify-center"><svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
-                                <span class="text-sm text-gray-700">No marketing skills needed</span>
-                            </div>
-                            <div class="flex items-start gap-3 bg-green-50 rounded-xl p-4 sm:col-span-2">
-                                <span class="mt-0.5 flex-shrink-0 w-6 h-6 rounded-full bg-green-600 flex items-center justify-center"><svg class="w-3.5 h-3.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
-                                <span class="text-sm text-gray-700">Beginner-friendly interface</span>
-                            </div>
-                        </div>
-
-                        <!-- How it works -->
-                        <h2 class="text-lg font-bold text-gray-900 mt-4 mb-2 flex items-center gap-2">
-                            <span class="w-1 h-5 bg-blue-600 rounded-full"></span>
-                            How Does It Work?
-                        </h2>
-                        <div class="space-y-2 mb-3">
-                            <div class="flex items-start gap-4 bg-gradient-to-r from-blue-50 to-transparent rounded-lg p-3.5 border border-blue-100">
-                                <span class="flex-shrink-0 w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-lg shadow-blue-200">1</span>
-                                <div><p class="font-semibold text-gray-900 mb-0.5">Sign Up</p><p class="text-sm text-gray-600 m-0">Sign up and access your dashboard</p></div>
-                            </div>
-                            <div class="flex items-start gap-4 bg-gradient-to-r from-blue-50 to-transparent rounded-lg p-3.5 border border-blue-100">
-                                <span class="flex-shrink-0 w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-lg shadow-blue-200">2</span>
-                                <div><p class="font-semibold text-gray-900 mb-0.5">Upload Book</p><p class="text-sm text-gray-600 m-0">Upload your book (PDF, DOC, or EPUB)</p></div>
-                            </div>
-                            <div class="flex items-start gap-4 bg-gradient-to-r from-blue-50 to-transparent rounded-lg p-3.5 border border-blue-100">
-                                <span class="flex-shrink-0 w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-lg shadow-blue-200">3</span>
-                                <div><p class="font-semibold text-gray-900 mb-0.5">AI Analysis</p><p class="text-sm text-gray-600 m-0">AI analyzes your content, audience, and tone</p></div>
-                            </div>
-                            <div class="flex items-start gap-4 bg-gradient-to-r from-blue-50 to-transparent rounded-lg p-3.5 border border-blue-100">
-                                <span class="flex-shrink-0 w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-lg shadow-blue-200">4</span>
-                                <div><p class="font-semibold text-gray-900 mb-0.5">Generate Content</p><p class="text-sm text-gray-600 m-0">Generate promotional materials automatically</p></div>
-                            </div>
-                            <div class="flex items-start gap-4 bg-gradient-to-r from-blue-50 to-transparent rounded-lg p-3.5 border border-blue-100">
-                                <span class="flex-shrink-0 w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center font-bold text-lg shadow-lg shadow-blue-200">5</span>
-                                <div><p class="font-semibold text-gray-900 mb-0.5">Auto-Publish</p><p class="text-sm text-gray-600 m-0">Connect social accounts and auto-publish with Amazon links</p></div>
-                            </div>
-                        </div>
-
-                        <!-- Value Breakdown -->
-                        <h2 class="text-lg font-bold text-gray-900 mt-4 mb-2 flex items-center gap-2">
-                            <span class="w-1 h-5 bg-blue-600 rounded-full"></span>
-                            What's Included &amp; Value Breakdown
-                        </h2>
-                        <div class="rounded-xl overflow-hidden border border-gray-200 shadow-sm mb-4">
-                            <table class="w-full text-sm">
-                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition"><td class="px-5 py-3 text-gray-700">Platform Technology</td><td class="px-5 py-3 text-right font-bold text-blue-600">Priceless</td></tr>
-                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition bg-gray-50/50"><td class="px-5 py-3 text-gray-700">Multi-Platform Posting</td><td class="px-5 py-3 text-right font-bold text-blue-600">$397</td></tr>
-                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition"><td class="px-5 py-3 text-gray-700">Targeted Traffic Generation</td><td class="px-5 py-3 text-right font-bold text-blue-600">$297</td></tr>
-                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition bg-gray-50/50"><td class="px-5 py-3 text-gray-700">AI Image Generator</td><td class="px-5 py-3 text-right font-bold text-blue-600">$197</td></tr>
-                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition"><td class="px-5 py-3 text-gray-700">Multiple Book Promotion</td><td class="px-5 py-3 text-right font-bold text-blue-600">$197</td></tr>
-                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition bg-gray-50/50"><td class="px-5 py-3 text-gray-700">24/7 Automation Engine</td><td class="px-5 py-3 text-right font-bold text-blue-600">$497</td></tr>
-                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition"><td class="px-5 py-3 text-gray-700">Audience-Targeted Messaging</td><td class="px-5 py-3 text-right font-bold text-blue-600">$297</td></tr>
-                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition bg-gray-50/50"><td class="px-5 py-3 text-gray-700">Beginner-Friendly Setup</td><td class="px-5 py-3 text-right font-bold text-blue-600">$197</td></tr>
-                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition"><td class="px-5 py-3 text-gray-700">Training Included</td><td class="px-5 py-3 text-right font-bold text-blue-600">$157</td></tr>
-                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition bg-gray-50/50"><td class="px-5 py-3 text-gray-700">Consistent Traffic Without Daily Posting</td><td class="px-5 py-3 text-right font-bold text-blue-600">$297</td></tr>
-                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition"><td class="px-5 py-3 text-gray-700">Support</td><td class="px-5 py-3 text-right font-bold text-blue-600">$197</td></tr>
-                                <tr class="border-b border-gray-100 hover:bg-gray-50 transition bg-gray-50/50"><td class="px-5 py-3 text-gray-700">14-Day Money-Back Guarantee</td><td class="px-5 py-3 text-right font-bold text-blue-600">Priceless</td></tr>
-                                <tr class="hover:bg-gray-50 transition"><td class="px-5 py-3 text-gray-700">Exclusive Bonuses</td><td class="px-5 py-3 text-right font-bold text-blue-600">$325</td></tr>
-                            </table>
-                        </div>
-
-                        <!-- Highlight -->
-                        <div class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-lg p-3 text-center my-3">
-                            <div class="flex flex-wrap items-center justify-center gap-5 text-white font-bold text-base">
-                                <span class="flex items-center gap-2">&#9889; Zero Manual Work</span>
-                                <span class="flex items-center gap-2">&#127919; Zero Marketing Skills</span>
-                                <span class="flex items-center gap-2">&#128176; Zero Monthly Costs</span>
-                            </div>
-                        </div>
-
-                        <!-- CTA -->
-                        <div class="text-center my-4">
-                            <a href="#" class="cta-pulse inline-block bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-4 rounded-2xl text-lg font-bold transition-all hover:scale-105 shadow-lg shadow-orange-200">
-                                Get EarlyBird Discount &amp; 300+ Bonus Bundle (worth $43k) &rarr;
-                            </a>
-                        </div>
-
-                        <!-- OTOs -->
-                        <h2 class="text-lg font-bold text-gray-900 mt-4 mb-2 flex items-center gap-2">
-                            <span class="w-1 h-5 bg-orange-500 rounded-full"></span>
-                            OTO's (One-Time Offers)
-                        </h2>
-                        <div class="space-y-2 mb-3">
-                            <div class="rounded-lg border border-orange-200 bg-gradient-to-r from-orange-50 to-transparent p-4 hover:shadow-md transition">
-                                <h3 class="text-lg font-bold text-orange-600 mb-2">OTO 1 &mdash; PRO Version</h3>
-                                <p class="text-sm text-gray-600 m-0">Unlocks higher limits, enhanced automation, promotes multiple books, faster results with advanced AI capabilities.</p>
-                            </div>
-                            <div class="rounded-lg border border-orange-200 bg-gradient-to-r from-orange-50 to-transparent p-4 hover:shadow-md transition">
-                                <h3 class="text-lg font-bold text-orange-600 mb-2">OTO 2 &mdash; Unlimited Edition</h3>
-                                <p class="text-sm text-gray-600 m-0">Removes all restrictions, unlimited campaigns and books, global audience reach, maximize earnings.</p>
-                            </div>
-                            <div class="rounded-lg border border-orange-200 bg-gradient-to-r from-orange-50 to-transparent p-4 hover:shadow-md transition">
-                                <h3 class="text-lg font-bold text-orange-600 mb-2">OTO 3 &mdash; Done-For-You Setup</h3>
-                                <p class="text-sm text-gray-600 m-0">Professional setup service, no tech skills required, optimized campaigns, saves time and effort.</p>
-                            </div>
-                            <div class="rounded-lg border border-orange-200 bg-gradient-to-r from-orange-50 to-transparent p-4 hover:shadow-md transition">
-                                <h3 class="text-lg font-bold text-orange-600 mb-2">OTO 4 &mdash; Traffic Booster</h3>
-                                <p class="text-sm text-gray-600 m-0">Increases visibility and clicks, more book exposure, faster scaling, boosts conversions.</p>
-                            </div>
-                            <div class="rounded-lg border border-orange-200 bg-gradient-to-r from-orange-50 to-transparent p-4 hover:shadow-md transition">
-                                <h3 class="text-lg font-bold text-orange-600 mb-2">OTO 5 &mdash; Agency License</h3>
-                                <p class="text-sm text-gray-600 m-0">Start your own book marketing agency &amp; charge clients monthly. Offering recurring income through book promotion services.</p>
-                            </div>
-                        </div>
-
-                        <!-- Bonus -->
-                        <h2 class="text-lg font-bold text-gray-900 mt-4 mb-2 flex items-center gap-2">
-                            <span class="w-1 h-5 bg-yellow-500 rounded-full"></span>
-                            Bonus Information
-                        </h2>
-
-                        <div class="my-3 text-center">
-                            <img src="im2.png" alt="AI Sales Rocket Bonus Bundle" class="max-w-full mx-auto rounded-lg shadow-md">
-                        </div>
-
-                        <div class="bg-gradient-to-r from-amber-50 to-yellow-50 border-2 border-dashed border-amber-400 rounded-lg p-3 my-3">
-                            <p class="font-semibold text-gray-800 mb-3">To receive additional bonuses:</p>
-                            <ol class="list-decimal list-inside space-y-2 text-gray-600">
-                                <li>Order using coupon code: <span class="inline-block bg-amber-200 text-amber-900 px-3 py-0.5 rounded-lg font-mono font-bold text-sm">FESPECIAL23</span></li>
-                                <li>You will receive bonuses via email after purchase confirmation</li>
-                            </ol>
-                        </div>
-
-                        <!-- Final CTA -->
-                        <div class="text-center my-4">
-                            <a href="#" class="cta-pulse inline-block bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white px-8 py-4 rounded-2xl text-lg font-bold transition-all hover:scale-105 shadow-lg shadow-orange-200">
-                                Get EarlyBird Discount &amp; 300+ Bonus Bundle (worth $43k) &rarr;
-                            </a>
-                        </div>
-
-                    </div>
-                </div>
-            </article>
-        </main>
-
-        <!-- Sidebar -->
-        <aside class="w-full lg:w-80 flex-shrink-0 space-y-3">
-            <div class="bg-white rounded-lg shadow-md p-4">
-                <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
-                    Search
-                </h3>
-                <form class="flex">
-                    <input type="text" class="flex-1 px-4 py-2.5 border border-gray-200 rounded-l-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Search articles...">
-                    <button type="submit" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-r-xl text-sm font-medium transition">Go</button>
-                </form>
-            </div>
-            <div class="bg-white rounded-lg shadow-md p-4">
-                <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
-                    Recent Posts
-                </h3>
-                <ul class="space-y-3">
-                    <li><a href="ai-sales-rocket-review.html" class="flex items-center gap-3 group"><span class="w-2 h-2 rounded-full bg-blue-600 flex-shrink-0 group-hover:scale-125 transition-transform"></span><span class="text-sm text-gray-600 group-hover:text-blue-600 transition-colors">AI Sales Rocket Review</span></a></li>
-                </ul>
-            </div>
-            <div class="bg-white rounded-lg shadow-md p-4">
-                <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
-                    <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg>
-                    Recent Comments
-                </h3>
-                <p class="text-sm text-gray-400 italic">No comments to show.</p>
-            </div>
-        </aside>
+    <!-- Title & Meta -->
+    <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight mb-2">AI Sales Rocket Review</h1>
+    <div class="flex flex-wrap items-center gap-2.5 text-xs text-slate-400 mb-5 pb-4 border-b border-slate-100">
+        <span class="flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            Apr 01, 2026
+        </span>
+        <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+        <span>Updated: Mar 24, 2026</span>
+        <span class="w-1 h-1 rounded-full bg-slate-300"></span>
+        <span>by <a href="#" class="text-indigo-500 hover:underline font-medium">mareviews</a></span>
     </div>
+
+    <!-- Content -->
+    <div>
+        <h2 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2.5">
+            <span class="w-1 h-6 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></span>
+            AI Sales Rocket Review 2026 + OTO's Coupon + $43,000 Free Bonus
+        </h2>
+
+        <!-- Product Image -->
+        <div class="my-5 bg-gradient-to-br from-[#0c0a1d] via-[#1a1145] to-[#2d1b69] rounded-2xl p-8 flex justify-center relative overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(99,102,241,0.15),transparent_70%)]"></div>
+            <img src="aiimg.png" alt="AI Sales Rocket" class="max-w-xs w-full drop-shadow-[0_20px_50px_rgba(99,102,241,0.4)] relative z-10">
+        </div>
+
+        <p class="text-[15px] text-slate-600 leading-relaxed mb-3">In today's competitive self-publishing world, writing a great book is no longer enough. Without proper marketing, even high-quality books can struggle to gain visibility. This is where <strong class="text-slate-800">AI Sales Rocket</strong> comes in.</p>
+        <p class="text-[15px] text-slate-600 leading-relaxed mb-4"><strong class="text-slate-800">AI Sales Rocket</strong> is an advanced AI-powered marketing automation platform built specifically for Amazon KDP authors and self-publishers.</p>
+
+        <!-- Product Table -->
+        <div class="my-5 rounded-2xl overflow-hidden border border-slate-200/60 shadow-sm">
+            <div class="bg-gradient-to-r from-[#1a1145] to-[#2d1b69] px-5 py-3.5">
+                <h3 class="text-white font-bold text-sm flex items-center gap-2">
+                    <svg class="w-4 h-4 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                    Product Overview
+                </h3>
+            </div>
+            <table class="w-full text-sm">
+                <tr class="border-b border-slate-100 hover:bg-slate-50/50 transition"><td class="px-5 py-3 font-semibold text-slate-600 bg-slate-50/50 w-40">Creator</td><td class="px-5 py-3 text-slate-600">Andreas Quintana &amp; Ryan Mac</td></tr>
+                <tr class="border-b border-slate-100 hover:bg-slate-50/50 transition"><td class="px-5 py-3 font-semibold text-slate-600 bg-slate-50/50">Product</td><td class="px-5 py-3 text-slate-600">AI Sales Rocket</td></tr>
+                <tr class="border-b border-slate-100 hover:bg-slate-50/50 transition"><td class="px-5 py-3 font-semibold text-slate-600 bg-slate-50/50">Launch Date</td><td class="px-5 py-3 text-slate-600">March 17, 2026</td></tr>
+                <tr class="border-b border-slate-100 hover:bg-slate-50/50 transition"><td class="px-5 py-3 font-semibold text-slate-600 bg-slate-50/50">Front-End Price</td><td class="px-5 py-3"><span class="text-emerald-600 font-extrabold text-lg">$27</span> <span class="text-slate-400 text-xs">(one-time)</span></td></tr>
+                <tr class="border-b border-slate-100 hover:bg-slate-50/50 transition"><td class="px-5 py-3 font-semibold text-slate-600 bg-slate-50/50">Guarantee</td><td class="px-5 py-3 text-slate-600">30-Day Money Back</td></tr>
+                <tr class="hover:bg-slate-50/50 transition"><td class="px-5 py-3 font-semibold text-slate-600 bg-slate-50/50">Rating</td><td class="px-5 py-3"><span class="text-amber-500 font-bold text-base">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span class="text-emerald-600 font-bold text-xs ml-1">Highly Recommend</span></td></tr>
+            </table>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center my-6">
+            <a href="#" class="cta-glow inline-block bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white px-8 py-3.5 rounded-xl text-sm font-bold transition-all hover:scale-[1.03] hover:brightness-110 shadow-xl shadow-purple-500/20">
+                Get EarlyBird Discount &amp; 300+ Bonus Bundle (worth $43k) &rarr;
+            </a>
+        </div>
+
+        <!-- What Is -->
+        <h2 class="text-lg font-bold text-slate-900 mt-6 mb-3 flex items-center gap-2.5"><span class="w-1 h-6 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></span>What Is AI Sales Rocket?</h2>
+        <p class="text-[15px] text-slate-600 leading-relaxed mb-4">AI Sales Rocket automatically creates promotional materials &mdash; social media posts, captions, blog articles, and images &mdash; and auto-publishes across Facebook, Instagram, Pinterest, and LinkedIn from a single dashboard.</p>
+
+        <!-- Features -->
+        <h2 class="text-lg font-bold text-slate-900 mt-6 mb-3 flex items-center gap-2.5"><span class="w-1 h-6 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></span>Key Features</h2>
+        <div class="grid sm:grid-cols-2 gap-3 mb-4">
+            <div class="flex items-center gap-3 bg-indigo-50/60 border border-indigo-100/80 rounded-xl px-4 py-3 text-sm text-slate-700 hover:bg-indigo-50 transition">
+                <span class="check-icon bg-indigo-500"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                High-converting posts &amp; visuals
+            </div>
+            <div class="flex items-center gap-3 bg-indigo-50/60 border border-indigo-100/80 rounded-xl px-4 py-3 text-sm text-slate-700 hover:bg-indigo-50 transition">
+                <span class="check-icon bg-indigo-500"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                Auto-publish to 7 platforms
+            </div>
+            <div class="flex items-center gap-3 bg-purple-50/60 border border-purple-100/80 rounded-xl px-4 py-3 text-sm text-slate-700 hover:bg-purple-50 transition">
+                <span class="check-icon bg-purple-500"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                Targeted Amazon traffic
+            </div>
+            <div class="flex items-center gap-3 bg-purple-50/60 border border-purple-100/80 rounded-xl px-4 py-3 text-sm text-slate-700 hover:bg-purple-50 transition">
+                <span class="check-icon bg-purple-500"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                24/7 automated system
+            </div>
+            <div class="flex items-center gap-3 bg-emerald-50/60 border border-emerald-100/80 rounded-xl px-4 py-3 text-sm text-slate-700 hover:bg-emerald-50 transition">
+                <span class="check-icon bg-emerald-500"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                Zero monthly costs
+            </div>
+            <div class="flex items-center gap-3 bg-emerald-50/60 border border-emerald-100/80 rounded-xl px-4 py-3 text-sm text-slate-700 hover:bg-emerald-50 transition">
+                <span class="check-icon bg-emerald-500"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg></span>
+                Beginner-friendly
+            </div>
+        </div>
+
+        <!-- Steps -->
+        <h2 class="text-lg font-bold text-slate-900 mt-6 mb-3 flex items-center gap-2.5"><span class="w-1 h-6 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></span>How Does It Work?</h2>
+        <div class="space-y-2 mb-4">
+            <div class="step-card flex items-center gap-4 bg-slate-50/80 rounded-xl px-4 py-3 border border-slate-100">
+                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 text-white flex items-center justify-center font-bold text-sm shadow-lg shadow-indigo-500/20 flex-shrink-0">1</span>
+                <div><span class="text-sm font-semibold text-slate-800">Sign Up</span> <span class="text-sm text-slate-500">&mdash; Access your dashboard</span></div>
+            </div>
+            <div class="step-card flex items-center gap-4 bg-slate-50/80 rounded-xl px-4 py-3 border border-slate-100">
+                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 text-white flex items-center justify-center font-bold text-sm shadow-lg shadow-indigo-500/20 flex-shrink-0">2</span>
+                <div><span class="text-sm font-semibold text-slate-800">Upload Book</span> <span class="text-sm text-slate-500">&mdash; PDF, DOC, or EPUB</span></div>
+            </div>
+            <div class="step-card flex items-center gap-4 bg-slate-50/80 rounded-xl px-4 py-3 border border-slate-100">
+                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 text-white flex items-center justify-center font-bold text-sm shadow-lg shadow-indigo-500/20 flex-shrink-0">3</span>
+                <div><span class="text-sm font-semibold text-slate-800">AI Analysis</span> <span class="text-sm text-slate-500">&mdash; Content, audience &amp; tone</span></div>
+            </div>
+            <div class="step-card flex items-center gap-4 bg-slate-50/80 rounded-xl px-4 py-3 border border-slate-100">
+                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 text-white flex items-center justify-center font-bold text-sm shadow-lg shadow-indigo-500/20 flex-shrink-0">4</span>
+                <div><span class="text-sm font-semibold text-slate-800">Generate</span> <span class="text-sm text-slate-500">&mdash; Auto-create promos</span></div>
+            </div>
+            <div class="step-card flex items-center gap-4 bg-slate-50/80 rounded-xl px-4 py-3 border border-slate-100">
+                <span class="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 text-white flex items-center justify-center font-bold text-sm shadow-lg shadow-indigo-500/20 flex-shrink-0">5</span>
+                <div><span class="text-sm font-semibold text-slate-800">Publish</span> <span class="text-sm text-slate-500">&mdash; Auto-post with Amazon links</span></div>
+            </div>
+        </div>
+
+        <!-- Value Table -->
+        <h2 class="text-lg font-bold text-slate-900 mt-6 mb-3 flex items-center gap-2.5"><span class="w-1 h-6 bg-gradient-to-b from-indigo-500 to-purple-500 rounded-full"></span>Value Breakdown</h2>
+        <div class="rounded-2xl overflow-hidden border border-slate-200/60 mb-4 shadow-sm">
+            <table class="w-full text-sm">
+                <tr class="border-b border-slate-100 bg-slate-50/50 hover:bg-indigo-50/30 transition"><td class="px-5 py-2.5 text-slate-600">Platform Technology</td><td class="px-5 py-2.5 text-right font-bold text-indigo-600">Priceless</td></tr>
+                <tr class="border-b border-slate-100 hover:bg-indigo-50/30 transition"><td class="px-5 py-2.5 text-slate-600">Multi-Platform Posting</td><td class="px-5 py-2.5 text-right font-bold text-indigo-600">$397</td></tr>
+                <tr class="border-b border-slate-100 bg-slate-50/50 hover:bg-indigo-50/30 transition"><td class="px-5 py-2.5 text-slate-600">Targeted Traffic</td><td class="px-5 py-2.5 text-right font-bold text-indigo-600">$297</td></tr>
+                <tr class="border-b border-slate-100 hover:bg-indigo-50/30 transition"><td class="px-5 py-2.5 text-slate-600">AI Image Generator</td><td class="px-5 py-2.5 text-right font-bold text-indigo-600">$197</td></tr>
+                <tr class="border-b border-slate-100 bg-slate-50/50 hover:bg-indigo-50/30 transition"><td class="px-5 py-2.5 text-slate-600">24/7 Automation Engine</td><td class="px-5 py-2.5 text-right font-bold text-indigo-600">$497</td></tr>
+                <tr class="border-b border-slate-100 hover:bg-indigo-50/30 transition"><td class="px-5 py-2.5 text-slate-600">Audience Messaging</td><td class="px-5 py-2.5 text-right font-bold text-indigo-600">$297</td></tr>
+                <tr class="border-b border-slate-100 bg-slate-50/50 hover:bg-indigo-50/30 transition"><td class="px-5 py-2.5 text-slate-600">Training &amp; Setup</td><td class="px-5 py-2.5 text-right font-bold text-indigo-600">$354</td></tr>
+                <tr class="border-b border-slate-100 hover:bg-indigo-50/30 transition"><td class="px-5 py-2.5 text-slate-600">Support + Guarantee</td><td class="px-5 py-2.5 text-right font-bold text-indigo-600">Priceless</td></tr>
+                <tr class="hover:bg-indigo-50/30 transition"><td class="px-5 py-2.5 text-slate-600">Exclusive Bonuses</td><td class="px-5 py-2.5 text-right font-bold text-indigo-600">$325</td></tr>
+            </table>
+        </div>
+
+        <!-- Highlight -->
+        <div class="bg-gradient-to-r from-[#1a1145] via-[#2d1b69] to-[#1a1145] rounded-2xl px-6 py-4 my-5">
+            <div class="flex flex-wrap items-center justify-center gap-5 text-white font-bold text-sm">
+                <span class="flex items-center gap-1.5">&#9889; Zero Manual Work</span>
+                <span class="w-1 h-1 rounded-full bg-white/30"></span>
+                <span class="flex items-center gap-1.5">&#127919; Zero Marketing Skills</span>
+                <span class="w-1 h-1 rounded-full bg-white/30"></span>
+                <span class="flex items-center gap-1.5">&#128176; Zero Monthly Costs</span>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="text-center my-6">
+            <a href="#" class="cta-glow inline-block bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white px-8 py-3.5 rounded-xl text-sm font-bold transition-all hover:scale-[1.03] hover:brightness-110 shadow-xl shadow-purple-500/20">
+                Get EarlyBird Discount &amp; 300+ Bonus Bundle (worth $43k) &rarr;
+            </a>
+        </div>
+
+        <!-- OTOs -->
+        <h2 class="text-lg font-bold text-slate-900 mt-6 mb-3 flex items-center gap-2.5"><span class="w-1 h-6 bg-gradient-to-b from-orange-400 to-pink-500 rounded-full"></span>OTO's (One-Time Offers)</h2>
+        <div class="space-y-2.5 mb-4">
+            <div class="flex items-start gap-4 rounded-2xl border border-purple-200/60 bg-gradient-to-r from-purple-50/40 to-transparent p-4 hover:border-purple-300 hover:shadow-sm transition-all">
+                <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 text-white flex items-center justify-center font-bold text-[10px] shadow-lg shadow-purple-500/20 flex-shrink-0 mt-0.5">OTO1</span>
+                <div><span class="text-sm font-bold text-slate-800">PRO Version</span><p class="text-[13px] text-slate-500 mt-1 leading-relaxed">Higher limits, enhanced automation, promotes multiple books with advanced AI.</p></div>
+            </div>
+            <div class="flex items-start gap-4 rounded-2xl border border-purple-200/60 bg-gradient-to-r from-purple-50/40 to-transparent p-4 hover:border-purple-300 hover:shadow-sm transition-all">
+                <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 text-white flex items-center justify-center font-bold text-[10px] shadow-lg shadow-purple-500/20 flex-shrink-0 mt-0.5">OTO2</span>
+                <div><span class="text-sm font-bold text-slate-800">Unlimited Edition</span><p class="text-[13px] text-slate-500 mt-1 leading-relaxed">No restrictions, unlimited campaigns/books, global audience.</p></div>
+            </div>
+            <div class="flex items-start gap-4 rounded-2xl border border-purple-200/60 bg-gradient-to-r from-purple-50/40 to-transparent p-4 hover:border-purple-300 hover:shadow-sm transition-all">
+                <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 text-white flex items-center justify-center font-bold text-[10px] shadow-lg shadow-purple-500/20 flex-shrink-0 mt-0.5">OTO3</span>
+                <div><span class="text-sm font-bold text-slate-800">Done-For-You Setup</span><p class="text-[13px] text-slate-500 mt-1 leading-relaxed">Professional setup, optimized campaigns, zero tech skills needed.</p></div>
+            </div>
+            <div class="flex items-start gap-4 rounded-2xl border border-purple-200/60 bg-gradient-to-r from-purple-50/40 to-transparent p-4 hover:border-purple-300 hover:shadow-sm transition-all">
+                <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 text-white flex items-center justify-center font-bold text-[10px] shadow-lg shadow-purple-500/20 flex-shrink-0 mt-0.5">OTO4</span>
+                <div><span class="text-sm font-bold text-slate-800">Traffic Booster</span><p class="text-[13px] text-slate-500 mt-1 leading-relaxed">More visibility, clicks, book exposure, faster scaling.</p></div>
+            </div>
+            <div class="flex items-start gap-4 rounded-2xl border border-purple-200/60 bg-gradient-to-r from-purple-50/40 to-transparent p-4 hover:border-purple-300 hover:shadow-sm transition-all">
+                <span class="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 text-white flex items-center justify-center font-bold text-[10px] shadow-lg shadow-purple-500/20 flex-shrink-0 mt-0.5">OTO5</span>
+                <div><span class="text-sm font-bold text-slate-800">Agency License</span><p class="text-[13px] text-slate-500 mt-1 leading-relaxed">Start your own book marketing agency, charge monthly for recurring income.</p></div>
+            </div>
+        </div>
+
+        <!-- Bonuses -->
+        <h2 class="text-lg font-bold text-slate-900 mt-6 mb-3 flex items-center gap-2.5"><span class="w-1 h-6 bg-gradient-to-b from-amber-400 to-orange-500 rounded-full"></span>Bonus Information</h2>
+        <div class="my-4 text-center">
+            <img src="im2.png" alt="AI Sales Rocket Bonus Bundle" class="max-w-full mx-auto rounded-2xl shadow-lg">
+        </div>
+        <div class="bg-gradient-to-r from-amber-50/80 to-orange-50/60 border border-amber-200/80 rounded-2xl p-5 mb-4">
+            <p class="font-semibold text-slate-800 text-sm mb-2">To receive additional bonuses:</p>
+            <ol class="list-decimal list-inside text-sm text-slate-600 space-y-1.5">
+                <li>Use coupon code: <span class="inline-block bg-amber-200/80 text-amber-900 px-2.5 py-0.5 rounded-lg font-mono font-bold text-xs">FESPECIAL23</span></li>
+                <li>Bonuses sent via email after purchase confirmation</li>
+            </ol>
+        </div>
+
+        <!-- Final CTA -->
+        <div class="text-center my-6">
+            <a href="#" class="cta-glow inline-block bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500 text-white px-8 py-3.5 rounded-xl text-sm font-bold transition-all hover:scale-[1.03] hover:brightness-110 shadow-xl shadow-purple-500/20">
+                Get EarlyBird Discount &amp; 300+ Bonus Bundle (worth $43k) &rarr;
+            </a>
+        </div>
+    </div>
+</div>
+</article>
+</main>
+
+<!-- Sidebar -->
+<aside class="w-full lg:w-80 flex-shrink-0 space-y-5">
+    <div class="sidebar-card rounded-2xl border border-slate-200/60 shadow-sm p-5">
+        <h3 class="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-xl bg-indigo-500/10 flex items-center justify-center"><svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
+            Search
+        </h3>
+        <form class="flex">
+            <input type="text" class="flex-1 px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-l-xl text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500/30 focus:border-indigo-400 transition-all placeholder:text-slate-400" placeholder="Search...">
+            <button class="px-4 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white rounded-r-xl text-xs font-semibold transition-all">Go</button>
+        </form>
+    </div>
+    <div class="sidebar-card rounded-2xl border border-slate-200/60 shadow-sm p-5">
+        <h3 class="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-xl bg-violet-500/10 flex items-center justify-center"><svg class="w-4 h-4 text-violet-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg></div>
+            Recent Posts
+        </h3>
+        <a href="ai-sales-rocket-review.html" class="flex items-center gap-2.5 group text-sm text-slate-600 hover:text-indigo-600 transition py-2 px-3 rounded-xl hover:bg-indigo-50/50">
+            <span class="w-2 h-2 rounded-full bg-indigo-500 group-hover:scale-125 transition-transform flex-shrink-0"></span>
+            AI Sales Rocket Review
+        </a>
+    </div>
+    <div class="sidebar-card rounded-2xl border border-slate-200/60 shadow-sm p-5">
+        <h3 class="text-sm font-bold text-slate-800 mb-3 flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-xl bg-amber-500/10 flex items-center justify-center"><svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg></div>
+            Recent Comments
+        </h3>
+        <p class="text-xs text-slate-400 italic px-3">No comments to show.</p>
+    </div>
+</aside>
+</div>
 </div>
 
 <!-- Footer -->
-<footer class="gradient-header mt-auto">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<footer class="hero-bg border-t border-white/[0.06]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div class="flex flex-col md:flex-row items-center justify-between gap-4">
             <div class="flex items-center gap-3">
-                <img src="logo.jpeg" alt="MA Reviews" class="h-10 brightness-110">
-                <span class="text-white/70 text-sm">&copy; 2026 MAReviews. All rights reserved.</span>
+                <img src="logo.jpeg" alt="MA Reviews" class="h-8 brightness-125 rounded-lg">
+                <span class="text-white/40 text-xs">&copy; 2026 MAReviews. All rights reserved.</span>
             </div>
-            <div class="flex flex-wrap items-center gap-4 text-sm">
-                <a href="privacy-policy.html" class="text-white/60 hover:text-white transition">Privacy</a>
-                <a href="terms-and-conditions.html" class="text-white/60 hover:text-white transition">Terms</a>
-                <a href="contact-us.html" class="text-white/60 hover:text-white transition">Contact</a>
-                <a href="disclaimer.html" class="text-white/60 hover:text-white transition">Disclaimer</a>
+            <div class="flex flex-wrap items-center gap-5 text-xs">
+                <a href="privacy-policy.html" class="text-white/40 hover:text-white/80 transition-all">Privacy</a>
+                <a href="terms-and-conditions.html" class="text-white/40 hover:text-white/80 transition-all">Terms</a>
+                <a href="contact-us.html" class="text-white/40 hover:text-white/80 transition-all">Contact</a>
+                <a href="disclaimer.html" class="text-white/40 hover:text-white/80 transition-all">Disclaimer</a>
             </div>
         </div>
     </div>
 </footer>
 
-<script>
-    document.getElementById('menuToggle').addEventListener('click', () => {
-        document.getElementById('mobileMenu').classList.toggle('hidden');
-    });
-</script>
-
+<script>document.getElementById('menuToggle').addEventListener('click', () => { document.getElementById('mobileMenu').classList.toggle('hidden'); });</script>
 </body>
 </html>
