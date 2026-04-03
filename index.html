@@ -5,118 +5,147 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MAReviews - Honest Product Reviews</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: { sans: ['DM Sans', 'system-ui', 'sans-serif'] },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'] },
                 }
             }
         }
     </script>
     <style>
-        body { font-family: 'DM Sans', system-ui, sans-serif; }
-        .nav-bg { background: #0f172a; }
-        .hero-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%); }
-        .accent { color: #0d9488; }
-        .accent-bg { background-color: #0d9488; }
-        .card-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-        .card-lift:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+        * { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+        .glass { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); background: rgba(15,23,42,0.75); }
+        .hero-mesh {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f172a 100%);
+            position: relative; overflow: hidden;
+        }
+        .hero-mesh::before {
+            content: ''; position: absolute; top: -50%; right: -30%; width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%);
+        }
+        .hero-mesh::after {
+            content: ''; position: absolute; bottom: -40%; left: -20%; width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%);
+        }
+        .card-modern {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.04);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-modern:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 12px 28px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        .gradient-btn {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            transition: all 0.2s;
+        }
+        .gradient-btn:hover {
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(37,99,235,0.35);
+        }
+        .sidebar-widget { background: #fff; border: 1px solid rgba(0,0,0,0.06); box-shadow: 0 1px 3px rgba(0,0,0,0.04); }
+        .tag { display: inline-flex; align-items: center; gap: 4px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 10px; border-radius: 20px; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-700 antialiased">
+<body class="bg-[#f8fafc] text-slate-700 antialiased">
 
 <!-- Navbar -->
-<header class="nav-bg sticky top-0 z-50 shadow-md">
-    <div class="max-w-6xl mx-auto px-3 sm:px-4">
-        <div class="flex items-center justify-between h-14">
-            <a href="index.html" class="flex items-center gap-2">
-                <img src="logo.jpeg" alt="MA Reviews" class="h-8 rounded">
-                <span class="text-white font-bold text-base">MA<span class="text-teal-400">Reviews</span></span>
+<header class="glass fixed top-0 left-0 right-0 z-50 border-b border-white/[0.06]">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="flex items-center justify-between h-[60px]">
+            <a href="index.html" class="flex items-center gap-2.5">
+                <img src="logo.jpeg" alt="MA Reviews" class="h-9 rounded-xl shadow-lg shadow-black/20">
+                <div>
+                    <span class="text-white font-extrabold text-[15px] tracking-tight">MAReviews</span>
+                    <span class="block text-[9px] text-blue-400 font-medium -mt-0.5 tracking-widest uppercase">Honest Reviews</span>
+                </div>
             </a>
-            <button id="menuToggle" class="lg:hidden text-gray-300 p-2">
-                <i class="fas fa-bars text-lg"></i>
+            <button id="menuToggle" class="lg:hidden text-white/80 p-2 rounded-xl hover:bg-white/10 transition">
+                <i class="fas fa-bars"></i>
             </button>
             <nav class="hidden lg:flex items-center gap-0.5">
-                <a href="index.html" class="text-teal-400 bg-white/10 px-3 py-1.5 text-[13px] font-semibold rounded-md">Home</a>
-                <a href="about-us.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-1.5 text-[13px] font-medium rounded-md transition">About Us</a>
-                <a href="privacy-policy.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-1.5 text-[13px] font-medium rounded-md transition">Privacy</a>
-                <a href="affiliate-disclosure.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-1.5 text-[13px] font-medium rounded-md transition">Disclosure</a>
-                <a href="terms-and-conditions.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-1.5 text-[13px] font-medium rounded-md transition">Terms</a>
-                <a href="contact-us.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-1.5 text-[13px] font-medium rounded-md transition">Contact</a>
-                <a href="disclaimer.html" class="text-gray-300 hover:text-white hover:bg-white/5 px-3 py-1.5 text-[13px] font-medium rounded-md transition">Disclaimer</a>
+                <a href="index.html" class="text-white font-semibold px-3.5 py-2 text-[13px] rounded-lg bg-white/[0.1] border border-white/[0.08]">
+                    <i class="fas fa-home text-blue-400 text-[11px] mr-1"></i> Home
+                </a>
+                <a href="about-us.html" class="text-slate-400 hover:text-white px-3.5 py-2 text-[13px] font-medium rounded-lg hover:bg-white/[0.06] transition">About</a>
+                <a href="privacy-policy.html" class="text-slate-400 hover:text-white px-3.5 py-2 text-[13px] font-medium rounded-lg hover:bg-white/[0.06] transition">Privacy</a>
+                <a href="affiliate-disclosure.html" class="text-slate-400 hover:text-white px-3.5 py-2 text-[13px] font-medium rounded-lg hover:bg-white/[0.06] transition">Disclosure</a>
+                <a href="terms-and-conditions.html" class="text-slate-400 hover:text-white px-3.5 py-2 text-[13px] font-medium rounded-lg hover:bg-white/[0.06] transition">Terms</a>
+                <a href="contact-us.html" class="text-slate-400 hover:text-white px-3.5 py-2 text-[13px] font-medium rounded-lg hover:bg-white/[0.06] transition">Contact</a>
+                <a href="disclaimer.html" class="text-slate-400 hover:text-white px-3.5 py-2 text-[13px] font-medium rounded-lg hover:bg-white/[0.06] transition">Disclaimer</a>
             </nav>
         </div>
         <div id="mobileMenu" class="hidden lg:hidden pb-3">
-            <div class="flex flex-col bg-slate-800 rounded-lg p-1 border border-slate-700">
-                <a href="index.html" class="text-teal-400 bg-white/10 px-3 py-2 rounded text-sm font-semibold">Home</a>
-                <a href="about-us.html" class="text-gray-300 hover:text-white px-3 py-2 rounded text-sm hover:bg-white/5 transition">About Us</a>
-                <a href="privacy-policy.html" class="text-gray-300 hover:text-white px-3 py-2 rounded text-sm hover:bg-white/5 transition">Privacy Policy</a>
-                <a href="affiliate-disclosure.html" class="text-gray-300 hover:text-white px-3 py-2 rounded text-sm hover:bg-white/5 transition">Affiliate Disclosure</a>
-                <a href="terms-and-conditions.html" class="text-gray-300 hover:text-white px-3 py-2 rounded text-sm hover:bg-white/5 transition">Terms</a>
-                <a href="contact-us.html" class="text-gray-300 hover:text-white px-3 py-2 rounded text-sm hover:bg-white/5 transition">Contact Us</a>
-                <a href="disclaimer.html" class="text-gray-300 hover:text-white px-3 py-2 rounded text-sm hover:bg-white/5 transition">Disclaimer</a>
+            <div class="bg-slate-800/90 rounded-xl p-2 border border-slate-700/50 space-y-0.5">
+                <a href="index.html" class="flex items-center gap-2 text-white bg-white/10 px-3 py-2.5 rounded-lg text-sm font-semibold"><i class="fas fa-home text-blue-400 text-xs w-5"></i> Home</a>
+                <a href="about-us.html" class="flex items-center gap-2 text-slate-300 hover:text-white px-3 py-2.5 rounded-lg text-sm hover:bg-white/5 transition"><i class="fas fa-users text-xs w-5 text-slate-500"></i> About Us</a>
+                <a href="privacy-policy.html" class="flex items-center gap-2 text-slate-300 hover:text-white px-3 py-2.5 rounded-lg text-sm hover:bg-white/5 transition"><i class="fas fa-shield-halved text-xs w-5 text-slate-500"></i> Privacy Policy</a>
+                <a href="affiliate-disclosure.html" class="flex items-center gap-2 text-slate-300 hover:text-white px-3 py-2.5 rounded-lg text-sm hover:bg-white/5 transition"><i class="fas fa-link text-xs w-5 text-slate-500"></i> Affiliate Disclosure</a>
+                <a href="terms-and-conditions.html" class="flex items-center gap-2 text-slate-300 hover:text-white px-3 py-2.5 rounded-lg text-sm hover:bg-white/5 transition"><i class="fas fa-file-lines text-xs w-5 text-slate-500"></i> Terms</a>
+                <a href="contact-us.html" class="flex items-center gap-2 text-slate-300 hover:text-white px-3 py-2.5 rounded-lg text-sm hover:bg-white/5 transition"><i class="fas fa-envelope text-xs w-5 text-slate-500"></i> Contact</a>
+                <a href="disclaimer.html" class="flex items-center gap-2 text-slate-300 hover:text-white px-3 py-2.5 rounded-lg text-sm hover:bg-white/5 transition"><i class="fas fa-circle-info text-xs w-5 text-slate-500"></i> Disclaimer</a>
             </div>
         </div>
     </div>
 </header>
 
 <!-- Hero -->
-<section class="hero-gradient -mt-px pt-10 pb-14 relative">
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-gray-50"></div>
-    <div class="relative max-w-3xl mx-auto px-3 sm:px-4 text-center">
-        <div class="inline-flex items-center gap-2 bg-teal-500/10 border border-teal-500/20 rounded-full px-4 py-1 mb-4 text-[12px] text-teal-300 font-semibold">
-            <i class="fas fa-shield-halved text-[10px]"></i>
-            Trusted Product Reviews Since 2026
+<section class="hero-mesh pt-[90px] pb-16">
+    <div class="relative z-10 max-w-3xl mx-auto px-4 text-center">
+        <div class="inline-flex items-center gap-2 bg-blue-500/10 border border-blue-500/20 rounded-full px-4 py-1.5 mb-5">
+            <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-60"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-400"></span>
+            </span>
+            <span class="text-blue-300 text-[12px] font-semibold">Trusted Product Reviews Since 2026</span>
         </div>
-        <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-2 tracking-tight">
-            Make Smarter <span class="text-teal-400">Buying Decisions</span>
+        <h1 class="text-3xl sm:text-4xl md:text-[44px] font-extrabold text-white mb-3 leading-tight">
+            Make Smarter
+            <span class="bg-gradient-to-r from-blue-400 via-blue-300 to-violet-400 bg-clip-text text-transparent"> Buying Decisions</span>
         </h1>
-        <p class="text-sm text-slate-400 max-w-md mx-auto">Unbiased, in-depth reviews of the latest digital products. We help you cut through the noise.</p>
+        <p class="text-slate-400 text-[15px] max-w-md mx-auto leading-relaxed">Unbiased, in-depth reviews of the latest digital products. We help you cut through the noise.</p>
     </div>
 </section>
 
-<!-- Main Content -->
-<div class="max-w-6xl mx-auto px-3 sm:px-4 -mt-6 pb-8 relative z-10">
-    <div class="flex flex-col lg:flex-row gap-4">
+<!-- Content -->
+<div class="max-w-6xl mx-auto px-4 -mt-6 pb-10 relative z-10">
+    <div class="flex flex-col lg:flex-row gap-5">
 
         <!-- Main -->
         <main class="flex-1 min-w-0">
-            <article class="group bg-white rounded-lg border border-gray-200 shadow-sm card-lift overflow-hidden">
-                <div class="h-0.5 bg-gradient-to-r from-teal-500 via-teal-400 to-emerald-400"></div>
-                <div class="p-4 sm:p-5">
-                    <div class="flex items-center gap-2 mb-2.5">
-                        <span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-teal-50 text-teal-700 border border-teal-200">
-                            <i class="fas fa-star text-[8px] mr-1"></i>Review
+            <article class="group card-modern rounded-2xl overflow-hidden">
+                <div class="h-[3px] bg-gradient-to-r from-blue-500 via-violet-500 to-blue-400"></div>
+                <div class="p-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="tag bg-blue-50 text-blue-600 border border-blue-100">
+                            <i class="fas fa-star text-[7px]"></i> Review
                         </span>
-                        <span class="px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200">
-                            <i class="fas fa-bolt text-[8px] mr-1"></i>New
+                        <span class="tag bg-emerald-50 text-emerald-600 border border-emerald-100">
+                            <i class="fas fa-bolt text-[7px]"></i> New
                         </span>
                     </div>
-                    <h2 class="text-lg font-bold text-gray-900 mb-1.5 group-hover:text-teal-700 transition-colors">
+                    <h2 class="text-[19px] font-bold text-slate-900 mb-1.5 group-hover:text-blue-600 transition-colors">
                         <a href="ai-sales-rocket-review.html">AI Sales Rocket Review</a>
                     </h2>
-                    <div class="flex flex-wrap items-center gap-2.5 text-xs text-gray-400 mb-3">
-                        <span class="flex items-center gap-1">
-                            <i class="far fa-calendar text-[10px]"></i>
-                            Mar 24, 2026
-                        </span>
-                        <span class="text-gray-300">|</span>
-                        <span>by <a href="#" class="text-teal-600 hover:underline font-medium">mareviews</a></span>
+                    <div class="flex flex-wrap items-center gap-2 text-[12px] text-slate-400 mb-3">
+                        <span class="flex items-center gap-1"><i class="far fa-calendar text-[10px]"></i> Mar 24, 2026</span>
+                        <span class="text-slate-300">|</span>
+                        <span>by <a href="#" class="text-blue-500 hover:underline font-medium">mareviews</a></span>
                     </div>
-                    <p class="text-[13px] text-gray-500 leading-relaxed mb-3">AI Sales Rocket Review 2026 + OTO's Coupon + $43,000 Free Bonus &mdash; In today's competitive self-publishing world, writing a great book is no longer enough. Without proper marketing, even high-quality books can struggle to gain visibility and generate consistent sales...</p>
-                    <div class="flex items-center justify-between pt-3 border-t border-gray-100">
-                        <div class="flex items-center gap-3 text-xs text-gray-400">
-                            <a href="#" class="hover:text-teal-600 transition flex items-center gap-1">
-                                <i class="fas fa-tag text-[10px]"></i> Uncategorized
-                            </a>
-                            <a href="#" class="hover:text-teal-600 transition flex items-center gap-1">
-                                <i class="far fa-comment text-[10px]"></i> Comment
-                            </a>
+                    <p class="text-[13px] text-slate-500 leading-[1.7] mb-4">AI Sales Rocket Review 2026 + OTO's Coupon + $43,000 Free Bonus &mdash; In today's competitive self-publishing world, writing a great book is no longer enough. Without proper marketing, even high-quality books can struggle to gain visibility...</p>
+                    <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+                        <div class="flex items-center gap-3 text-[12px] text-slate-400">
+                            <a href="#" class="hover:text-blue-500 transition flex items-center gap-1"><i class="fas fa-tag text-[10px]"></i> Uncategorized</a>
+                            <a href="#" class="hover:text-blue-500 transition flex items-center gap-1"><i class="far fa-comment text-[10px]"></i> Comment</a>
                         </div>
-                        <a href="ai-sales-rocket-review.html" class="inline-flex items-center gap-1.5 accent-bg hover:bg-teal-600 text-white px-4 py-2 rounded-md text-xs font-semibold transition shadow-sm">
+                        <a href="ai-sales-rocket-review.html" class="gradient-btn inline-flex items-center gap-1.5 text-white px-4 py-2 rounded-lg text-[12px] font-semibold shadow-md">
                             Read Review <i class="fas fa-arrow-right text-[10px]"></i>
                         </a>
                     </div>
@@ -125,48 +154,51 @@
         </main>
 
         <!-- Sidebar -->
-        <aside class="w-full lg:w-64 flex-shrink-0 space-y-3">
-            <div class="bg-white rounded-lg border border-gray-200 shadow-sm p-3.5">
-                <h3 class="text-xs font-bold text-gray-800 mb-2 flex items-center gap-1.5">
-                    <i class="fas fa-search text-teal-500 text-[11px]"></i> Search
+        <aside class="w-full lg:w-[260px] flex-shrink-0 space-y-3">
+            <div class="sidebar-widget rounded-2xl p-4">
+                <h3 class="text-[13px] font-bold text-slate-800 mb-2.5 flex items-center gap-2">
+                    <span class="w-7 h-7 rounded-lg bg-blue-50 flex items-center justify-center"><i class="fas fa-search text-blue-500 text-[11px]"></i></span> Search
                 </h3>
                 <form class="flex">
-                    <input type="text" class="flex-1 px-3 py-1.5 bg-gray-50 border border-gray-200 rounded-l text-xs focus:outline-none focus:ring-1 focus:ring-teal-500 focus:border-teal-500 transition" placeholder="Search articles...">
-                    <button type="submit" class="px-3 py-1.5 accent-bg hover:bg-teal-600 text-white rounded-r text-xs font-semibold transition">Go</button>
+                    <input type="text" class="flex-1 px-3 py-2 bg-slate-50 border border-slate-200 rounded-l-lg text-[12px] focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 transition placeholder:text-slate-400" placeholder="Search articles...">
+                    <button type="submit" class="px-3 py-2 gradient-btn text-white rounded-r-lg text-[12px] font-semibold">Go</button>
                 </form>
             </div>
-            <div class="bg-white rounded-lg border border-gray-200 shadow-sm p-3.5">
-                <h3 class="text-xs font-bold text-gray-800 mb-2 flex items-center gap-1.5">
-                    <i class="far fa-newspaper text-teal-500 text-[11px]"></i> Recent Posts
+            <div class="sidebar-widget rounded-2xl p-4">
+                <h3 class="text-[13px] font-bold text-slate-800 mb-2.5 flex items-center gap-2">
+                    <span class="w-7 h-7 rounded-lg bg-violet-50 flex items-center justify-center"><i class="far fa-newspaper text-violet-500 text-[11px]"></i></span> Recent Posts
                 </h3>
-                <a href="ai-sales-rocket-review.html" class="flex items-center gap-2 group text-xs text-gray-600 hover:text-teal-700 transition py-1 px-1.5 rounded hover:bg-teal-50/50">
-                    <i class="fas fa-chevron-right text-[8px] text-teal-500"></i>
+                <a href="ai-sales-rocket-review.html" class="flex items-center gap-2 text-[12px] text-slate-600 hover:text-blue-600 transition py-1.5 px-2 rounded-lg hover:bg-blue-50/50 group">
+                    <i class="fas fa-chevron-right text-[8px] text-blue-400 group-hover:translate-x-0.5 transition-transform"></i>
                     AI Sales Rocket Review
                 </a>
             </div>
-            <div class="bg-white rounded-lg border border-gray-200 shadow-sm p-3.5">
-                <h3 class="text-xs font-bold text-gray-800 mb-2 flex items-center gap-1.5">
-                    <i class="far fa-comments text-teal-500 text-[11px]"></i> Recent Comments
+            <div class="sidebar-widget rounded-2xl p-4">
+                <h3 class="text-[13px] font-bold text-slate-800 mb-2.5 flex items-center gap-2">
+                    <span class="w-7 h-7 rounded-lg bg-amber-50 flex items-center justify-center"><i class="far fa-comments text-amber-500 text-[11px]"></i></span> Recent Comments
                 </h3>
-                <p class="text-[11px] text-gray-400 italic">No comments to show.</p>
+                <p class="text-[11px] text-slate-400 italic">No comments to show.</p>
             </div>
         </aside>
     </div>
 </div>
 
 <!-- Footer -->
-<footer class="nav-bg border-t border-slate-800">
-    <div class="max-w-6xl mx-auto px-3 sm:px-4 py-5">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-3">
-            <div class="flex items-center gap-2.5">
-                <img src="logo.jpeg" alt="MA Reviews" class="h-7 rounded">
-                <span class="text-gray-500 text-xs">&copy; 2026 MAReviews. All rights reserved.</span>
+<footer class="bg-slate-900 border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-4 py-6">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <img src="logo.jpeg" alt="MA Reviews" class="h-8 rounded-lg">
+                <div>
+                    <span class="text-white font-bold text-sm">MAReviews</span>
+                    <span class="block text-slate-500 text-[11px]">&copy; 2026 All rights reserved.</span>
+                </div>
             </div>
-            <div class="flex flex-wrap items-center gap-4 text-xs">
-                <a href="privacy-policy.html" class="text-gray-500 hover:text-teal-400 transition">Privacy</a>
-                <a href="terms-and-conditions.html" class="text-gray-500 hover:text-teal-400 transition">Terms</a>
-                <a href="contact-us.html" class="text-gray-500 hover:text-teal-400 transition">Contact</a>
-                <a href="disclaimer.html" class="text-gray-500 hover:text-teal-400 transition">Disclaimer</a>
+            <div class="flex flex-wrap items-center gap-4 text-[12px]">
+                <a href="privacy-policy.html" class="text-slate-500 hover:text-blue-400 transition">Privacy</a>
+                <a href="terms-and-conditions.html" class="text-slate-500 hover:text-blue-400 transition">Terms</a>
+                <a href="contact-us.html" class="text-slate-500 hover:text-blue-400 transition">Contact</a>
+                <a href="disclaimer.html" class="text-slate-500 hover:text-blue-400 transition">Disclaimer</a>
             </div>
         </div>
     </div>
