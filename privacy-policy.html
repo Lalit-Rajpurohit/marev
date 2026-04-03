@@ -5,182 +5,218 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy - MAReviews</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script>tailwind.config={theme:{extend:{fontFamily:{sans:['Inter','system-ui','sans-serif']}}}}</script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: { extend: { fontFamily: { sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'] } } }
+        }
+    </script>
     <style>
-        body{font-family:'Inter',system-ui,sans-serif}
-        .gradient-header{background:linear-gradient(135deg,#1e3a5f 0%,#1e40af 50%,#2563eb 100%)}
-        .nav-link{position:relative}.nav-link::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;background:#fff;transition:all .3s;transform:translateX(-50%)}.nav-link:hover::after{width:80%}
+        * { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+        .nav-light { background: #fff; border-bottom: 1px solid #e2e8f0; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
+<body class="bg-white text-slate-700 antialiased">
 
-<header class="gradient-header shadow-xl sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-20">
-            <a href="index.html" class="flex-shrink-0"><img src="logo.jpeg" alt="MA Reviews" class="h-12 w-auto brightness-110 drop-shadow-lg"></a>
-            <button id="menuToggle" class="lg:hidden text-white p-2 rounded-lg hover:bg-white/10 transition"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg></button>
-            <nav class="hidden lg:flex items-center gap-1">
-                <a href="privacy-policy.html" class="nav-link text-white px-3 py-2 text-sm font-medium transition">Privacy Policy</a>
-                <a href="about-us.html" class="nav-link text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition">About Us</a>
-                <a href="affiliate-disclosure.html" class="nav-link text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition">Affiliate Disclosure</a>
-                <a href="terms-and-conditions.html" class="nav-link text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition">Terms</a>
-                <a href="contact-us.html" class="nav-link text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition">Contact</a>
-                <a href="disclaimer.html" class="nav-link text-white/90 hover:text-white px-3 py-2 text-sm font-medium transition">Disclaimer</a>
+<header class="nav-light fixed top-0 left-0 right-0 z-50 shadow-sm">
+    <div class="max-w-[1600px] mx-auto px-2 sm:px-3">
+        <div class="flex items-center justify-between h-[56px]">
+            <a href="index.html" class="flex items-center gap-2">
+                <img src="logo.jpeg" alt="MA Reviews" class="h-9 rounded-lg">
+                <div>
+                    <span class="text-slate-900 font-extrabold text-[15px]">MAReviews</span>
+                    <span class="block text-[9px] text-cyan-600 font-semibold -mt-0.5 tracking-widest uppercase">Honest Reviews</span>
+                </div>
+            </a>
+            <button id="menuToggle" class="lg:hidden text-slate-600 p-2 rounded-lg hover:bg-slate-100 transition">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="hidden lg:flex items-center gap-0.5">
+                <a href="index.html" class="text-cyan-700 bg-cyan-50 font-semibold px-3 py-1.5 text-[13px] rounded-lg">
+                    <i class="fas fa-home text-[11px] mr-1"></i> Home
+                </a>
+                <a href="about-us.html" class="text-slate-500 hover:text-cyan-700 hover:bg-cyan-50 px-3 py-1.5 text-[13px] font-medium rounded-lg transition">About</a>
+                <a href="privacy-policy.html" class="text-slate-500 hover:text-cyan-700 hover:bg-cyan-50 px-3 py-1.5 text-[13px] font-medium rounded-lg transition">Privacy</a>
+                <a href="affiliate-disclosure.html" class="text-slate-500 hover:text-cyan-700 hover:bg-cyan-50 px-3 py-1.5 text-[13px] font-medium rounded-lg transition">Disclosure</a>
+                <a href="terms-and-conditions.html" class="text-slate-500 hover:text-cyan-700 hover:bg-cyan-50 px-3 py-1.5 text-[13px] font-medium rounded-lg transition">Terms</a>
+                <a href="contact-us.html" class="text-slate-500 hover:text-cyan-700 hover:bg-cyan-50 px-3 py-1.5 text-[13px] font-medium rounded-lg transition">Contact</a>
+                <a href="disclaimer.html" class="text-slate-500 hover:text-cyan-700 hover:bg-cyan-50 px-3 py-1.5 text-[13px] font-medium rounded-lg transition">Disclaimer</a>
             </nav>
         </div>
-        <div id="mobileMenu" class="hidden lg:hidden pb-4"><div class="flex flex-col gap-1 bg-white/10 rounded-xl p-3 backdrop-blur-sm">
-            <a href="privacy-policy.html" class="text-white hover:bg-white/10 px-4 py-2.5 rounded-lg text-sm transition">Privacy Policy</a>
-            <a href="about-us.html" class="text-white/90 hover:bg-white/10 px-4 py-2.5 rounded-lg text-sm transition">About Us</a>
-            <a href="affiliate-disclosure.html" class="text-white/90 hover:bg-white/10 px-4 py-2.5 rounded-lg text-sm transition">Affiliate Disclosure</a>
-            <a href="terms-and-conditions.html" class="text-white/90 hover:bg-white/10 px-4 py-2.5 rounded-lg text-sm transition">Terms and Conditions</a>
-            <a href="contact-us.html" class="text-white/90 hover:bg-white/10 px-4 py-2.5 rounded-lg text-sm transition">Contact Us</a>
-            <a href="disclaimer.html" class="text-white/90 hover:bg-white/10 px-4 py-2.5 rounded-lg text-sm transition">Disclaimer</a>
-        </div></div>
+        <div id="mobileMenu" class="hidden lg:hidden pb-3">
+            <div class="bg-slate-50 rounded-xl p-2 border border-slate-200 space-y-0.5">
+                <a href="index.html" class="flex items-center gap-2 text-cyan-700 bg-cyan-50 px-3 py-2.5 rounded-lg text-sm font-semibold"><i class="fas fa-home text-xs w-5 text-cyan-500"></i> Home</a>
+                <a href="about-us.html" class="flex items-center gap-2 text-slate-600 hover:text-cyan-700 px-3 py-2.5 rounded-lg text-sm hover:bg-cyan-50 transition"><i class="fas fa-users text-xs w-5 text-slate-400"></i> About Us</a>
+                <a href="privacy-policy.html" class="flex items-center gap-2 text-slate-600 hover:text-cyan-700 px-3 py-2.5 rounded-lg text-sm hover:bg-cyan-50 transition"><i class="fas fa-shield-halved text-xs w-5 text-slate-400"></i> Privacy</a>
+                <a href="affiliate-disclosure.html" class="flex items-center gap-2 text-slate-600 hover:text-cyan-700 px-3 py-2.5 rounded-lg text-sm hover:bg-cyan-50 transition"><i class="fas fa-link text-xs w-5 text-slate-400"></i> Disclosure</a>
+                <a href="terms-and-conditions.html" class="flex items-center gap-2 text-slate-600 hover:text-cyan-700 px-3 py-2.5 rounded-lg text-sm hover:bg-cyan-50 transition"><i class="fas fa-file-lines text-xs w-5 text-slate-400"></i> Terms</a>
+                <a href="contact-us.html" class="flex items-center gap-2 text-slate-600 hover:text-cyan-700 px-3 py-2.5 rounded-lg text-sm hover:bg-cyan-50 transition"><i class="fas fa-envelope text-xs w-5 text-slate-400"></i> Contact</a>
+                <a href="disclaimer.html" class="flex items-center gap-2 text-slate-600 hover:text-cyan-700 px-3 py-2.5 rounded-lg text-sm hover:bg-cyan-50 transition"><i class="fas fa-circle-info text-xs w-5 text-slate-400"></i> Disclaimer</a>
+            </div>
+        </div>
     </div>
 </header>
 
-<div class="bg-white border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-        <nav class="flex items-center gap-2 text-sm text-gray-500">
-            <a href="index.html" class="hover:text-blue-600 transition">Home</a>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            <span class="text-gray-800 font-medium">Privacy Policy</span>
+<div class="bg-slate-50 border-b border-slate-200 pt-[56px]">
+    <div class="max-w-[1600px] mx-auto px-2 sm:px-3 py-2">
+        <nav class="flex items-center gap-2 text-[12px] text-slate-400">
+            <a href="index.html" class="hover:text-cyan-600 transition flex items-center gap-1"><i class="fas fa-home text-[10px]"></i> Home</a>
+            <i class="fas fa-chevron-right text-[8px] text-slate-300"></i>
+            <span class="text-slate-700 font-semibold">Privacy Policy</span>
         </nav>
     </div>
 </div>
 
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-    <div class="flex flex-col lg:flex-row gap-8">
-        <main class="flex-1 min-w-0">
-            <article class="bg-white rounded-2xl shadow-lg overflow-hidden">
-                <div class="h-1.5 bg-gradient-to-r from-blue-600 via-purple-500 to-orange-500"></div>
-                <div class="p-8 sm:p-10">
-                    <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-8">Privacy Policy</h1>
-                    <div class="space-y-8 text-gray-600 leading-relaxed">
+<div class="max-w-[1600px] mx-auto px-2 sm:px-3 py-4">
+<div class="flex flex-col lg:flex-row gap-3">
+<main class="flex-1 min-w-0">
+<article class="bg-white rounded-2xl border border-slate-100 overflow-hidden">
+<div class="h-[3px] bg-gradient-to-r from-cyan-500 via-cyan-400 to-teal-400"></div>
+<div class="p-5 sm:p-6">
+    <h1 class="text-xl sm:text-2xl font-extrabold text-slate-900 mb-4">Privacy Policy</h1>
+    <div class="space-y-6">
 
-                        <p>Your privacy is important to us at <strong class="text-gray-900">mareviews.com</strong>. This Privacy Policy outlines how we collect, use, and protect your information when you visit our website.</p>
+        <p class="text-[15px] text-slate-600 leading-[1.9]">Your privacy is important to us at <strong class="text-slate-900">mareviews.com</strong>. This Privacy Policy outlines how we collect, use, and protect your information when you visit our website.</p>
 
-                        <div>
-                            <h2 class="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2"><span class="w-1 h-6 bg-blue-600 rounded-full"></span> 1. Information We Collect</h2>
-                            <p class="mb-3">We may collect the following types of information:</p>
-                            <ul class="list-disc list-inside space-y-2 ml-4">
-                                <li><strong>Personal Information:</strong> Name, email address (only if you voluntarily provide it, e.g., contact forms or subscriptions)</li>
-                                <li><strong>Non-Personal Information:</strong> Browser type, device information, IP address, pages visited, and time spent on our website</li>
-                            </ul>
-                        </div>
+        <div>
+            <h2 class="text-[17px] font-bold text-slate-900 mb-3 flex items-center gap-2"><span class="w-1 h-5 bg-cyan-500 rounded-full"></span> 1. Information We Collect</h2>
+            <p class="text-[15px] text-slate-600 leading-[1.9] mb-3">We may collect the following types of information:</p>
+            <ul class="space-y-2 ml-4">
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i><span><strong class="text-slate-900">Personal Information:</strong> Name, email address (only if you voluntarily provide it, e.g., contact forms or subscriptions)</span></li>
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i><span><strong class="text-slate-900">Non-Personal Information:</strong> Browser type, device information, IP address, pages visited, and time spent on our website</span></li>
+            </ul>
+        </div>
 
-                        <div>
-                            <h2 class="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2"><span class="w-1 h-6 bg-blue-600 rounded-full"></span> 2. How We Use Your Information</h2>
-                            <p class="mb-3">We use the collected information to:</p>
-                            <ul class="list-disc list-inside space-y-2 ml-4">
-                                <li>Improve our website and user experience</li>
-                                <li>Respond to inquiries or support requests</li>
-                                <li>Send updates or promotional content (only if you opt-in)</li>
-                                <li>Analyze traffic and performance</li>
-                                <li>Comply with legal requirements</li>
-                            </ul>
-                        </div>
+        <div>
+            <h2 class="text-[17px] font-bold text-slate-900 mb-3 flex items-center gap-2"><span class="w-1 h-5 bg-cyan-500 rounded-full"></span> 2. How We Use Your Information</h2>
+            <p class="text-[15px] text-slate-600 leading-[1.9] mb-3">We use the collected information to:</p>
+            <ul class="space-y-2 ml-4">
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i> Improve our website and user experience</li>
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i> Respond to inquiries or support requests</li>
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i> Send updates or promotional content (only if you opt-in)</li>
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i> Analyze traffic and performance</li>
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i> Comply with legal requirements</li>
+            </ul>
+        </div>
 
-                        <div>
-                            <h2 class="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2"><span class="w-1 h-6 bg-blue-600 rounded-full"></span> 3. Affiliate Disclosure</h2>
-                            <p class="mb-3">mareviews.com participates in affiliate marketing programs. This means:</p>
-                            <ul class="list-disc list-inside space-y-2 ml-4">
-                                <li>We may earn a commission when users click on affiliate links and purchase products</li>
-                                <li>These commissions come at no extra cost to you</li>
-                                <li>We only promote products we believe may provide value</li>
-                            </ul>
-                        </div>
+        <div>
+            <h2 class="text-[17px] font-bold text-slate-900 mb-3 flex items-center gap-2"><span class="w-1 h-5 bg-cyan-500 rounded-full"></span> 3. Affiliate Disclosure</h2>
+            <p class="text-[15px] text-slate-600 leading-[1.9] mb-3">mareviews.com participates in affiliate marketing programs. This means:</p>
+            <ul class="space-y-2 ml-4">
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i> We may earn a commission when users click on affiliate links and purchase products</li>
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i> These commissions come at no extra cost to you</li>
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i> We only promote products we believe may provide value</li>
+            </ul>
+        </div>
 
-                        <div>
-                            <h2 class="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2"><span class="w-1 h-6 bg-blue-600 rounded-full"></span> 4. Third-Party Services</h2>
-                            <p class="mb-3">We may use third-party services that collect data, including:</p>
-                            <ul class="list-disc list-inside space-y-2 ml-4">
-                                <li>Analytics tools (e.g., Google Analytics)</li>
-                                <li>Advertising platforms (e.g., Google Ads)</li>
-                                <li>Affiliate networks and product vendors</li>
-                            </ul>
-                        </div>
+        <div>
+            <h2 class="text-[17px] font-bold text-slate-900 mb-3 flex items-center gap-2"><span class="w-1 h-5 bg-cyan-500 rounded-full"></span> 4. Third-Party Services</h2>
+            <p class="text-[15px] text-slate-600 leading-[1.9] mb-3">We may use third-party services that collect data, including:</p>
+            <ul class="space-y-2 ml-4">
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i> Analytics tools (e.g., Google Analytics)</li>
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i> Advertising platforms (e.g., Google Ads)</li>
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i> Affiliate networks and product vendors</li>
+            </ul>
+        </div>
 
-                        <div>
-                            <h2 class="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2"><span class="w-1 h-6 bg-blue-600 rounded-full"></span> 5. Cookies Policy</h2>
-                            <p class="mb-3">Our website may use cookies to:</p>
-                            <ul class="list-disc list-inside space-y-2 ml-4">
-                                <li>Enhance user experience</li>
-                                <li>Track website performance</li>
-                                <li>Personalize content and ads</li>
-                            </ul>
-                            <p class="mt-3">You can disable cookies through your browser settings.</p>
-                        </div>
+        <div>
+            <h2 class="text-[17px] font-bold text-slate-900 mb-3 flex items-center gap-2"><span class="w-1 h-5 bg-cyan-500 rounded-full"></span> 5. Cookies Policy</h2>
+            <p class="text-[15px] text-slate-600 leading-[1.9] mb-3">Our website may use cookies to:</p>
+            <ul class="space-y-2 ml-4">
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i> Enhance user experience</li>
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i> Track website performance</li>
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i> Personalize content and ads</li>
+            </ul>
+            <p class="text-[15px] text-slate-600 leading-[1.9] mt-3">You can disable cookies through your browser settings.</p>
+        </div>
 
-                        <div>
-                            <h2 class="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2"><span class="w-1 h-6 bg-blue-600 rounded-full"></span> 6. Third-Party Links</h2>
-                            <p>Our website contains links to third-party websites (affiliate products/vendors). We are not responsible for the privacy practices or content of those websites.</p>
-                        </div>
+        <div>
+            <h2 class="text-[17px] font-bold text-slate-900 mb-3 flex items-center gap-2"><span class="w-1 h-5 bg-cyan-500 rounded-full"></span> 6. Third-Party Links</h2>
+            <p class="text-[15px] text-slate-600 leading-[1.9]">Our website contains links to third-party websites (affiliate products/vendors). We are not responsible for the privacy practices or content of those websites.</p>
+        </div>
 
-                        <div>
-                            <h2 class="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2"><span class="w-1 h-6 bg-blue-600 rounded-full"></span> 7. Data Protection</h2>
-                            <p>We take reasonable measures to protect your information. However, no method of transmission over the internet is 100% secure. We cannot guarantee absolute security.</p>
-                        </div>
+        <div>
+            <h2 class="text-[17px] font-bold text-slate-900 mb-3 flex items-center gap-2"><span class="w-1 h-5 bg-cyan-500 rounded-full"></span> 7. Data Protection</h2>
+            <p class="text-[15px] text-slate-600 leading-[1.9]">We take reasonable measures to protect your information. However, no method of transmission over the internet is 100% secure. We cannot guarantee absolute security.</p>
+        </div>
 
-                        <div>
-                            <h2 class="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2"><span class="w-1 h-6 bg-blue-600 rounded-full"></span> 8. No Direct Customer Support</h2>
-                            <p class="mb-3">mareviews.com is an independent affiliate website:</p>
-                            <ul class="list-disc list-inside space-y-2 ml-4">
-                                <li>We do not own or manage the products listed</li>
-                                <li>For product-related support, please contact the respective vendor directly</li>
-                            </ul>
-                        </div>
+        <div>
+            <h2 class="text-[17px] font-bold text-slate-900 mb-3 flex items-center gap-2"><span class="w-1 h-5 bg-cyan-500 rounded-full"></span> 8. No Direct Customer Support</h2>
+            <p class="text-[15px] text-slate-600 leading-[1.9] mb-3">mareviews.com is an independent affiliate website:</p>
+            <ul class="space-y-2 ml-4">
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i> We do not own or manage the products listed</li>
+                <li class="text-[15px] text-slate-600 leading-[1.9] flex items-start gap-2"><i class="fas fa-check-circle text-cyan-500 text-[13px] mt-1.5"></i> For product-related support, please contact the respective vendor directly</li>
+            </ul>
+        </div>
 
-                        <div>
-                            <h2 class="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2"><span class="w-1 h-6 bg-blue-600 rounded-full"></span> 9. Children's Information</h2>
-                            <p>We do not knowingly collect personal information from children under 13. If you believe we have collected such data, please contact us immediately.</p>
-                        </div>
+        <div>
+            <h2 class="text-[17px] font-bold text-slate-900 mb-3 flex items-center gap-2"><span class="w-1 h-5 bg-cyan-500 rounded-full"></span> 9. Children's Information</h2>
+            <p class="text-[15px] text-slate-600 leading-[1.9]">We do not knowingly collect personal information from children under 13. If you believe we have collected such data, please contact us immediately.</p>
+        </div>
 
-                        <div>
-                            <h2 class="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2"><span class="w-1 h-6 bg-blue-600 rounded-full"></span> 10. Your Consent</h2>
-                            <p>By using our website, you consent to this Privacy Policy.</p>
-                        </div>
+        <div>
+            <h2 class="text-[17px] font-bold text-slate-900 mb-3 flex items-center gap-2"><span class="w-1 h-5 bg-cyan-500 rounded-full"></span> 10. Your Consent</h2>
+            <p class="text-[15px] text-slate-600 leading-[1.9]">By using our website, you consent to this Privacy Policy.</p>
+        </div>
 
-                        <div>
-                            <h2 class="text-xl font-bold text-gray-900 mb-3 flex items-center gap-2"><span class="w-1 h-6 bg-blue-600 rounded-full"></span> 11. Updates to This Policy</h2>
-                            <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page.</p>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        </main>
-
-        <aside class="w-full lg:w-80 flex-shrink-0 space-y-6">
-            <div class="bg-white rounded-2xl shadow-lg p-6">
-                <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg> Search</h3>
-                <form class="flex"><input type="text" class="flex-1 px-4 py-2.5 border border-gray-200 rounded-l-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Search articles..."><button type="submit" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-r-xl text-sm font-medium transition">Go</button></form>
-            </div>
-            <div class="bg-white rounded-2xl shadow-lg p-6">
-                <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg> Recent Posts</h3>
-                <ul class="space-y-3"><li><a href="ai-sales-rocket-review.html" class="flex items-center gap-3 group"><span class="w-2 h-2 rounded-full bg-blue-600 flex-shrink-0 group-hover:scale-125 transition-transform"></span><span class="text-sm text-gray-600 group-hover:text-blue-600 transition-colors">AI Sales Rocket Review</span></a></li></ul>
-            </div>
-            <div class="bg-white rounded-2xl shadow-lg p-6">
-                <h3 class="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2"><svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/></svg> Recent Comments</h3>
-                <p class="text-sm text-gray-400 italic">No comments to show.</p>
-            </div>
-        </aside>
+        <div>
+            <h2 class="text-[17px] font-bold text-slate-900 mb-3 flex items-center gap-2"><span class="w-1 h-5 bg-cyan-500 rounded-full"></span> 11. Updates to This Policy</h2>
+            <p class="text-[15px] text-slate-600 leading-[1.9]">We may update this Privacy Policy from time to time. Any changes will be posted on this page.</p>
+        </div>
     </div>
 </div>
+</article>
+</main>
 
-<footer class="gradient-header mt-auto">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="flex items-center gap-3"><img src="logo.jpeg" alt="MA Reviews" class="h-10 brightness-110"><span class="text-white/70 text-sm">&copy; 2026 MAReviews. All rights reserved.</span></div>
-            <div class="flex flex-wrap items-center gap-4 text-sm">
-                <a href="privacy-policy.html" class="text-white/60 hover:text-white transition">Privacy</a>
-                <a href="terms-and-conditions.html" class="text-white/60 hover:text-white transition">Terms</a>
-                <a href="contact-us.html" class="text-white/60 hover:text-white transition">Contact</a>
-                <a href="disclaimer.html" class="text-white/60 hover:text-white transition">Disclaimer</a>
+<aside class="w-full lg:w-[280px] flex-shrink-0 space-y-3">
+    <div class="bg-white rounded-2xl border border-slate-100 p-4 shadow-sm">
+        <h3 class="text-[13px] font-bold text-slate-800 mb-2.5 flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-cyan-50 flex items-center justify-center"><i class="fas fa-search text-cyan-500 text-[11px]"></i></span> Search
+        </h3>
+        <form class="flex">
+            <input type="text" class="flex-1 px-3 py-2 bg-slate-50 border border-slate-200 rounded-l-lg text-[12px] focus:outline-none focus:ring-2 focus:ring-cyan-500/20 focus:border-cyan-400 transition placeholder:text-slate-400" placeholder="Search articles...">
+            <button type="submit" class="px-3 py-2 bg-cyan-500 hover:bg-cyan-600 text-white rounded-r-lg text-[12px] font-semibold transition">Go</button>
+        </form>
+    </div>
+    <div class="bg-white rounded-2xl border border-slate-100 p-4 shadow-sm">
+        <h3 class="text-[13px] font-bold text-slate-800 mb-2.5 flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-cyan-50 flex items-center justify-center"><i class="far fa-newspaper text-cyan-500 text-[11px]"></i></span> Recent Posts
+        </h3>
+        <a href="ai-sales-rocket-review.html" class="flex items-center gap-2 text-[12px] text-slate-600 hover:text-cyan-600 transition py-1.5 px-2 rounded-lg hover:bg-cyan-50/50 group">
+            <i class="fas fa-chevron-right text-[8px] text-cyan-400 group-hover:translate-x-0.5 transition-transform"></i>
+            AI Sales Rocket Review
+        </a>
+    </div>
+    <div class="bg-white rounded-2xl border border-slate-100 p-4 shadow-sm">
+        <h3 class="text-[13px] font-bold text-slate-800 mb-2.5 flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-amber-50 flex items-center justify-center"><i class="far fa-comments text-amber-500 text-[11px]"></i></span> Recent Comments
+        </h3>
+        <p class="text-[11px] text-slate-400 italic">No comments to show.</p>
+    </div>
+</aside>
+</div>
+</div>
+
+<footer class="bg-slate-50 border-t border-slate-200">
+    <div class="max-w-[1600px] mx-auto px-2 sm:px-3 py-5">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+                <img src="logo.jpeg" alt="MA Reviews" class="h-8 rounded-lg">
+                <div>
+                    <span class="text-slate-800 font-bold text-sm">MAReviews</span>
+                    <span class="block text-slate-400 text-[11px]">&copy; 2026 All rights reserved.</span>
+                </div>
+            </div>
+            <div class="flex flex-wrap items-center gap-4 text-[12px]">
+                <a href="privacy-policy.html" class="text-slate-400 hover:text-cyan-600 transition">Privacy</a>
+                <a href="terms-and-conditions.html" class="text-slate-400 hover:text-cyan-600 transition">Terms</a>
+                <a href="contact-us.html" class="text-slate-400 hover:text-cyan-600 transition">Contact</a>
+                <a href="disclaimer.html" class="text-slate-400 hover:text-cyan-600 transition">Disclaimer</a>
             </div>
         </div>
     </div>
 </footer>
-<script>document.getElementById('menuToggle').addEventListener('click',()=>{document.getElementById('mobileMenu').classList.toggle('hidden')})</script>
+<script>document.getElementById('menuToggle').addEventListener('click', () => { document.getElementById('mobileMenu').classList.toggle('hidden'); });</script>
 </body>
 </html>
